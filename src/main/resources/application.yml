@@ -1,0 +1,23 @@
+spring:
+  thymeleaf:
+    check-template-location: true
+    prefix: classpath:templates/   # .html 파일을 불러오기 위한 경로 설정(src/main/resources/templates)
+    suffix: .html   # 파일 확장자
+    cache: false
+    mode: HTML
+  mvc:
+    static-path-pattern: /static/** # spring mvc 정적경로 변경
+  devtools:
+    livereload:
+      enabled: true
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@112.65.186.215:1521:hwang
+    username: hwang
+    password: rootoor
+
+server:
+  port: 8050
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
