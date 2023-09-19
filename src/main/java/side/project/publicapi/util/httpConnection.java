@@ -1,5 +1,5 @@
 public class httpConnection {
-    public static void httpTestByMethod(String url, String method) {
+    public static void httpTestByMethod(String url, String method, HashMap<String,String> data) {
 		
 		HttpUtils htppUtils = new HttpUtils();
 		String result = "";
@@ -14,11 +14,14 @@ public class httpConnection {
 			conn.setDoOutput(true); //URL 연결시 데이터를 사용할지에 대한 설정 ( defualt false )
 			try (DataOutputStream dataOutputStream = new DataOutputStream(conn.getOutputStream());){
 				
-				String str = "{\"user\" : \"kimchy\",    "
-						+ "\"post_date\" : \"2009-11-15T14:12:12\",    "
-						+ "\"message\" : \"trying out Elasticsearch\"}";
+				//String str = "{\"user\" : \"kimchy\",    "
+				//		+ "\"post_date\" : \"2009-11-15T14:12:12\",    "
+				//		+ "\"message\" : \"trying out Elasticsearch\"}";
+
+				JSONObject jsonData =  new JSONObject(data);
 				
-				dataOutputStream.writeBytes(str);
+				//dataOutputStream.writeBytes(str);
+				dataOutputStream.writeBytes(jsonData);
 				dataOutputStream.flush();
 				
 				result = htppUtils.getHttpRespons(conn);
@@ -27,7 +30,7 @@ public class httpConnection {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if("DELETE".equalsIgnoreCase(method)) {			
+		}else if("DELETE".equalsIgnoreCase(method)) {
 			result = htppUtils.getHttpRespons(conn);
 		}
 		

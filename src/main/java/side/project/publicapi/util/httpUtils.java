@@ -9,6 +9,7 @@ public class httpUtils {
 			conn.setRequestMethod(method); //Method 방식 설정. GET/POST/DELETE/PUT/HEAD/OPTIONS/TRACE
 			conn.setConnectTimeout(5000); //연결제한 시간 설정. 5초 간 연결시도
 			conn.setRequestProperty("Content-Type", "application/json");
+			conn.setRequestProperty("accept", "application/json");
 
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

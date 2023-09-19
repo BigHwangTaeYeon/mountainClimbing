@@ -5,18 +5,23 @@ import org.springframework.stereotype.Controller;;
 
 public class api {
     
-    public void mountain(){
+    public void cultureApi(){
 
-        String url = "https://api.vworld.kr/req/data";
-        //sampleData = 'https://api.vworld.kr/req/data?service=data&version=2.0&request=GetFeature&key=%24%24KJeB2cxWt-HX_0fFllSqPnebrwByLJklBoBvxM2_KiR61F8IXfp9eSlD2aN-FPAl&format=xml&errorformat=xml&size=10&page=1&data=LT_L_FRSTCLIMB&geomfilter=LINESTRING(13133057.313802%204496529.073264%2C14133023.872602%204496514.7413212)&attrfilter=sec_len%3ABETWEEN%3A100%2C200&columns=sec_len%2Cup_min%2Cdown_min%2Ccat_nam%2Cmntn_nm%2Cag_geom&geometry=true&attribute=true&crs=EPSG%3A900913&domain=api.vworld.kr'
-		//
-        
-        
-        httpTestByMethod(url, "GET");
+        String url = "http://api.kcisa.kr/openapi/CNV_060/request";
+        //문화체육관광부_문화예술공연(통합)
+        //문화체육관광부 대표 누리집의 '문화예술공연' 게시판 및 문화포털(https://www.culture.go.kr/)에 등록된 게시글을 연계하여 제공하는 공연전시 프로그램 정보로 연극, 뮤지컬, 오페라, 음악, 콘서트, 국악, 무용, 전시, 기타 등 각 분야의 문화예술공연 목록 정보를 통합 제공하고 있습니다.
+        //https://www.culture.go.kr/data/openapi/openapiView.do?id=580
+
+        HashMap<String, String> data = new HashMap<String, String>();
+        data.push("serviceKey", "Key");
+        data.push("numOfRows", 10);
+        data.push("pageNo", 1);
+
+        httpTestByMethod(url, "GET", data);
 		
-		httpTestByMethod(url, "POST");
+		httpTestByMethod(url, "POST", data);
 		
-		httpTestByMethod(url, "DELETE");
+		httpTestByMethod(url, "DELETE", data);
 
     }
 
