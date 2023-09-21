@@ -16,6 +16,11 @@ public class api {
         data.push("numOfRows", 10);
         data.push("pageNo", 1);
 
+        data.entrySet()
+            .stream()
+            .sorted(Map.Entry.comparingByKey())
+            .forEach(entry -> System.out.printf("Key : %s, value : %s%n", entry.getKey(), entry.getValue()));
+        
         httpConnection hc = new httpConnection();
         hc.httpTestByMethod(url, method, data);
     }
