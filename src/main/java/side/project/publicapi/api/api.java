@@ -10,7 +10,7 @@ public class api {
 
     public void cultureApi(String method){
         String url = "http://api.kcisa.kr/openapi/CNV_060/request";
-        String method = "GET";
+        //String method = "GET";
         HashMap<String, String> data = new HashMap<String, String>();
         data.push("serviceKey", cultureKey);
         data.push("numOfRows", 10);

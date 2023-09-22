@@ -6,7 +6,7 @@ spring:
     cache: false
     mode: HTML
   mvc:
-    static-path-pattern: /static/** # spring mvc 정적경로 변경
+    static-path-pattern: /resources/static/** # spring mvc 정적경로 변경
   devtools:
     livereload:
       enabled: true
