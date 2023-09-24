@@ -25,3 +25,7 @@ mybatis:
 api:
   culture:
     key: e4cad89f-ee3b-4062-b13e-60734d47a93c
+
+thread:
+  pool:
+    size: 2

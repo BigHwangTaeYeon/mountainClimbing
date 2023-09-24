@@ -28,3 +28,17 @@ validateDistributionUrl=true
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
 
+# 230924
+CREATE TABLE CULTURE_API {
+      PSEQ            NUMBER(10)        NOT NULL    PRIMARY KEY     COMMENT ''
+    , TITLE           VARCHAR2(100)                                 COMMENT ''
+    , PERIOD          VARCHAR(100)                                  COMMENT ''
+    , EVENTPERIOD     VARCHAR(100)                                  COMMENT ''
+    , EVENTSITE       VARCHAR(100)                                  COMMENT ''
+    , CHARGE          VARCHAR(100)                                  COMMENT ''
+    , CONTACTPOINT    VARCHAR2(100)                                 COMMENT ''
+    , URL             VARCHAR(1000)                                 COMMENT ''
+    , IMAGEOBJECT     VARCHAR(100)                                  COMMENT ''
+    , DESCRIPTION     VARCHAR2(100000)                              COMMENT ''
+    , VIEWCOUNT       VARCHAR(1000)                                 COMMENT ''
+}

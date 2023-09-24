@@ -31,7 +31,7 @@ public class HttpConnection {
 		}else if("DELETE".equalsIgnoreCase(method)) {
 			result = htppUtils.getHttpRespons(conn);
 		}
-		System.out.println("Method = " + method + "/ result = " + result);
+		// System.out.println("Method = " + method + "/ result = " + result);
 		return result;
 	}
 }

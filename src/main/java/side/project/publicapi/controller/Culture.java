@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import side.project.publicapi.scheduler.ApiScheduler;
 import side.project.publicapi.util.HttpConnection;
 
 @Controller
@@ -14,12 +15,15 @@ public class Culture {
     private String cultureKey;
     
     @RequestMapping(value="/culture")
-    public void getCulture(String method){
+    public void getCulture(String method) throws Exception {
         String url = "http://api.kcisa.kr/openapi/CNV_060/request";
         
 		url += "?serviceKey=" + cultureKey;
 		url += "&numOfRows=" + 10;
 		url += "&pageNo=" + 1;
+
+        ApiScheduler as = new ApiScheduler();
+        as.cultureApi(method);
 
         // HttpConnection hc = new HttpConnection();
         HttpConnection.httpTestByMethod(url, method);
