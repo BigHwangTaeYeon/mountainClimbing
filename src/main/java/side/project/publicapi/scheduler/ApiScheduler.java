@@ -34,11 +34,38 @@ public class ApiScheduler {
 		JSONObject movieData1 = (JSONObject)movieData.get("items");
 		// 두 번째 JSONObject
       JSONArray movieData10 = (JSONArray)movieData1.get("item");
-      movieData10.size();
-		JSONObject title = (JSONObject)movieData10.get(0);
-		String title1 = (String)title.get("title");
+      
+		// JSONObject title = (JSONObject)movieData10.get(0);
+		// String title1 = (String)title.get("title");
 
       cultureApiVO cpVO = new cultureApiVO();
+      ArrayList<cultureApiVO> getData = new ArrayList();
+      for(int i=0; i<movieData10.size(); i++){
+         JSONObject jsonList = (JSONObject)movieData10.get(i);
+
+         // 데이터 구분 PK 추출
+         String urlStr = (String)jsonList.get("url");
+         //http://www.mcst.go.kr/web/s_culture/culture/cultureView.jsp?pSeq=12741
+         int index = urlStr.indexOf("pSeq=");
+         String result = urlStr.substring(index + 4, str.length());
+         cpVO.setPSql(result);
+
+         if(seqCheck)  // 있는 데이터는 손 안본다.
+            break;
+
+         cpVO.setTitle((String)jsonList.get("title"));
+         cpVO.setPeriod((String)jsonList.get("period"));
+         cpVO.setEventPeriod((String)jsonList.get("eventPeriod"));
+         cpVO.setEventSite((String)jsonList.get("eventSite"));
+         cpVO.setCharge((String)jsonList.get("charge"));
+         cpVO.setContactPoint((String)jsonList.get("contactPoint"));
+         cpVO.setUrl((String)jsonList.get("url"));
+         cpVO.setImageObject((String)jsonList.get("imageObject"));
+         cpVO.setDescription((String)jsonList.get("description"));
+         cpVO.setViewCount((String)jsonList.get("viewCount"));
+         getData.add(cpVO);
+      }
+
       for(int i=0; i<movieData10.size(); i++){
 		   cpVO = (cultureApiVO)movieData10.get(i);
          //insert service.insertCulture(cpVO)

@@ -41,4 +41,5 @@ CREATE TABLE CULTURE_API {
     , IMAGEOBJECT     VARCHAR(100)                                  COMMENT ''
     , DESCRIPTION     VARCHAR2(100000)                              COMMENT ''
     , VIEWCOUNT       VARCHAR(1000)                                 COMMENT ''
+    , REGDATE         DATE
 }
