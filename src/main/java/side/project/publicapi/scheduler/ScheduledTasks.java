@@ -42,6 +42,7 @@ public class ScheduledTasks {
     @Scheduled(cron = "0 0 0 ? * SUN *")
     public synchronized void cronExpression() {
         log.info("현재시간 - {}", formatter.format(LocalDateTime.now()));
+        ApiScheduler.cultureApi("GET");
     }
 
 }

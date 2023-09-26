@@ -9,11 +9,8 @@ import side.project.publicapi.util.HttpConnection;
 import side.project.publicapi.vo.cultureApiVO;
 
 public class ApiScheduler {
-   @Scheduled(fixedRate = 3000)
-   public void fixedRate() {
-      System.out.println("fixedRate: 현재시간 - {}");
-   }
-   public void cultureApi(String method) throws Exception {
+   
+   public static void cultureApi(String method) throws Exception {
       String url = "http://api.kcisa.kr/openapi/CNV_060/request";
       String cultureKey = "e4cad89f-ee3b-4062-b13e-60734d47a93c";
         
@@ -72,4 +69,33 @@ public class ApiScheduler {
       }
 
      }
+
+   public static void cultureApi(String method) throws Exception {
+      // https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?
+      // serviceKey=wvclTcKfaznWPJW5f137YCcDLJ41ee%2B6his8ede7mYo6xCNwf1isheXbQpXzRKN6IX7v7ilYRbYzPAEkM0Bl0Q%3D%3D&
+      // pageNo=1&
+      // numOfRows=10&
+      // dataType=JSON&
+      // regId=11B00000&
+      // tmFc=202309260600
+
+      String url = "https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst";
+      String weatherKey = "wvclTcKfaznWPJW5f137YCcDLJ41ee+6his8ede7mYo6xCNwf1isheXbQpXzRKN6IX7v7ilYRbYzPAEkM0Bl0Q==&"; //공공데이터포털에서 받은 인증키
+      String pageNo = ""; //페이지번호
+      String numOfRows = ""; //한 페이지 결과 수
+      String dataType = ""; //요청자료형식(XML/JSON)Default: XML
+      String regId = ""; //11B0000 서울, 인천, 경기도 11D10000 등 (활용가이드 하단 참고자료 참조)
+      String tmFc = ""; // 202309260600 조회 시간, 일 2회(06:00,18:00)회 생성
+
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+      Calendar c1 = Calendar.getInstance();
+      String strToday = sdf.format(c1.getTime());
+      tmFc = strToday + "0600 or 1800"
+
+		url += "?serviceKey=" + weatherKey + "pageNo=" + pageNo + "&numOfRows=" + numOfRows + "&dataType=" + dataType + "&regId=" + regId + "&tmFc" = ""
+
+      String result = HttpConnection.httpTestByMethod(url, method);
+
+   }
+
 }
