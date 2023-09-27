@@ -1,4 +1,4 @@
-public interface cultureApiService {
+public interface CultureApiService {
     
     // pSeqCheck
     int seqCheck(String seq) throws Exception;

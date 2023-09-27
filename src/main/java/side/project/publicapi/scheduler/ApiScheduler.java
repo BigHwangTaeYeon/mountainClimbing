@@ -10,16 +10,17 @@ import side.project.publicapi.vo.cultureApiVO;
 
 public class ApiScheduler {
    
+   CultureApiService cultureApiService = (CultureApiService) ApplicationContextProvider.getApplicationContext().getBean(CultureApiService.class);
+   
    public static void cultureApi(String method) throws Exception {
       String url = "http://api.kcisa.kr/openapi/CNV_060/request";
       String cultureKey = "e4cad89f-ee3b-4062-b13e-60734d47a93c";
-        
+      
 		url += "?serviceKey=" + cultureKey;
 		url += "&numOfRows=" + 10;
 		url += "&pageNo=" + 1;
 
       String result = HttpConnection.httpTestByMethod(url, method);
-
 
 		// JSONParser로 JSONObject 객체
 		JSONObject objData = (JSONObject)new JSONParser().parse(result);
@@ -61,6 +62,8 @@ public class ApiScheduler {
          cpVO.setDescription((String)jsonList.get("description"));
          cpVO.setViewCount((String)jsonList.get("viewCount"));
          getData.add(cpVO);
+
+         cultureApiService.cutureInsert(cpVO);
       }
 
       for(int i=0; i<movieData10.size(); i++){
@@ -68,7 +71,7 @@ public class ApiScheduler {
          //insert service.insertCulture(cpVO)
       }
 
-     }
+   }
 
    public static void cultureApi(String method) throws Exception {
       // https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?

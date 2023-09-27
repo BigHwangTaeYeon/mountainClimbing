@@ -1,5 +1,5 @@
 @service
-public class cultureApiServiceImpl implements cultureApiService {
+public class CultureApiServiceImpl implements cultureApiService {
     
     // pSeqCheck
 	public int seqCheck(String seq) throws Exception{
