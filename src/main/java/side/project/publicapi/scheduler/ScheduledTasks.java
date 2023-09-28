@@ -40,9 +40,10 @@ public class ScheduledTasks {
     // 크론 표현식으로 정해진 날짜와 시간으로 작업을 수행
     // 매주 일요일 자정
     @Scheduled(cron = "0 0 0 ? * SUN *")
-    public synchronized void cronExpression() {
+    public synchronized void cronExpression() throws Exception {
         log.info("현재시간 - {}", formatter.format(LocalDateTime.now()));
-        ApiScheduler.cultureApi("GET");
+        ApiScheduler api = new ApiScheduler();
+        api.cultureApi("GET");
     }
 
 }

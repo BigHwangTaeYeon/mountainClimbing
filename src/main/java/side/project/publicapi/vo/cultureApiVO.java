@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class cultureApiVO {
+public class CultureApiVO {
     private String pSeq;
     private String title;
     private String period;

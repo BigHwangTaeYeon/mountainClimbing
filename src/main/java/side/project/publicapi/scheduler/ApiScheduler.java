@@ -1,29 +1,33 @@
 package side.project.publicapi.scheduler;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.scheduling.annotation.Scheduled;
 
+import side.project.publicapi.config.ApplicationContextProvider;
+import side.project.publicapi.service.CultureApiService;
 import side.project.publicapi.util.HttpConnection;
-import side.project.publicapi.vo.cultureApiVO;
+import side.project.publicapi.vo.CultureApiVO;
 
 public class ApiScheduler {
-   
+   ApplicationContextProvider ApplicationContextProvider = new ApplicationContextProvider();
    CultureApiService cultureApiService = (CultureApiService) ApplicationContextProvider.getApplicationContext().getBean(CultureApiService.class);
    
-   public static void cultureApi(String method) throws Exception {
+   public void cultureApi(String method) throws Exception {
       String url = "http://api.kcisa.kr/openapi/CNV_060/request";
       String cultureKey = "e4cad89f-ee3b-4062-b13e-60734d47a93c";
-      
+
 		url += "?serviceKey=" + cultureKey;
 		url += "&numOfRows=" + 10;
 		url += "&pageNo=" + 1;
 
-      String result = HttpConnection.httpTestByMethod(url, method);
+      String httpConResult = HttpConnection.httpTestByMethod(url, method);
 
 		// JSONParser로 JSONObject 객체
-		JSONObject objData = (JSONObject)new JSONParser().parse(result);
+		JSONObject objData = (JSONObject)new JSONParser().parse(httpConResult);
 		// 첫 번째 JSONObject
 		JSONObject objData1 = (JSONObject)objData.get("response");
 		// 첫 번째 JSONObject
@@ -36,19 +40,19 @@ public class ApiScheduler {
 		// JSONObject title = (JSONObject)movieData10.get(0);
 		// String title1 = (String)title.get("title");
 
-      cultureApiVO cpVO = new cultureApiVO();
-      ArrayList<cultureApiVO> getData = new ArrayList();
+      CultureApiVO cpVO;
       for(int i=0; i<movieData10.size(); i++){
+         cpVO = new CultureApiVO();
          JSONObject jsonList = (JSONObject)movieData10.get(i);
 
          // 데이터 구분 PK 추출
          String urlStr = (String)jsonList.get("url");
          //http://www.mcst.go.kr/web/s_culture/culture/cultureView.jsp?pSeq=12741
          int index = urlStr.indexOf("pSeq=");
-         String result = urlStr.substring(index + 4, str.length());
-         cpVO.setPSql(result);
-
-         if(seqCheck)  // 있는 데이터는 손 안본다.
+         String seqResult = urlStr.substring(index + 4, urlStr.length());
+         cpVO.setPSeq(seqResult);
+         
+         if(cultureApiService.seqCheck(seqResult) == 1)  // 있는 데이터는 손 안본다.
             break;
 
          cpVO.setTitle((String)jsonList.get("title"));
@@ -61,19 +65,13 @@ public class ApiScheduler {
          cpVO.setImageObject((String)jsonList.get("imageObject"));
          cpVO.setDescription((String)jsonList.get("description"));
          cpVO.setViewCount((String)jsonList.get("viewCount"));
-         getData.add(cpVO);
 
-         cultureApiService.cutureInsert(cpVO);
-      }
-
-      for(int i=0; i<movieData10.size(); i++){
-		   cpVO = (cultureApiVO)movieData10.get(i);
-         //insert service.insertCulture(cpVO)
+         cultureApiService.cultureInsert(cpVO);
       }
 
    }
 
-   public static void cultureApi(String method) throws Exception {
+   public void weatherApi(String method) throws Exception {
       // https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?
       // serviceKey=wvclTcKfaznWPJW5f137YCcDLJ41ee%2B6his8ede7mYo6xCNwf1isheXbQpXzRKN6IX7v7ilYRbYzPAEkM0Bl0Q%3D%3D&
       // pageNo=1&
@@ -93,12 +91,13 @@ public class ApiScheduler {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
       Calendar c1 = Calendar.getInstance();
       String strToday = sdf.format(c1.getTime());
-      tmFc = strToday + "0600 or 1800"
+      tmFc = strToday + "0600 or 1800";
 
-		url += "?serviceKey=" + weatherKey + "pageNo=" + pageNo + "&numOfRows=" + numOfRows + "&dataType=" + dataType + "&regId=" + regId + "&tmFc" = ""
+		url += "?serviceKey=" + weatherKey + "pageNo=" + pageNo + "&numOfRows=" + numOfRows + "&dataType=" + dataType + "&regId=" + regId + "&tmFc=" + tmFc;
 
       String result = HttpConnection.httpTestByMethod(url, method);
-
+      
+      System.out.println(result);
    }
 
 }

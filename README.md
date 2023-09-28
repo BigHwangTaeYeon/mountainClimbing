@@ -53,3 +53,27 @@ key = wvclTcKfaznWPJW5f137YCcDLJ41ee+6his8ede7mYo6xCNwf1isheXbQpXzRKN6IX7v7ilYRb
 마이페이지 > 데이터활용 > OpenAPI > 활용신청현황
 https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst
 ?serviceKey=wvclTcKfaznWPJW5f137YCcDLJ41ee%2B6his8ede7mYo6xCNwf1isheXbQpXzRKN6IX7v7ilYRbYzPAEkM0Bl0Q%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&regId=11B00000&tmFc=202309260600
+
+# 230928
+노트북
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "PublicapiApplication",
+            "request": "launch",
+            "mainClass": "side.project.publicapi.PublicapiApplication",
+            "projectName": "publicapi"
+        }
+    ]
+}
