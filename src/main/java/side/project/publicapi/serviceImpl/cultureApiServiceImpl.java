@@ -9,14 +9,16 @@ import side.project.publicapi.vo.CultureApiVO;
 @Service
 public class CultureApiServiceImpl implements CultureApiService {
     
+	private CultureApiDAO cultuerDao;
+
     // pSeqCheck
 	public int seqCheck(String seq) throws Exception{
-		return CultureApiDAO.seqCheck(seq);
+		return cultuerDao.seqCheck(seq);
 	}
 
     // data insert
     public void cultureInsert(CultureApiVO vo) throws Exception{
-		CultureApiDAO.cutureInsert(vo);
+		cultuerDao.cutureInsert(vo);
 	}
 
 }
