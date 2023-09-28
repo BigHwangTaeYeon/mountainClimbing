@@ -77,3 +77,33 @@ https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst
         }
     ]
 }
+
+CREATE TABLE CULTURE_API (
+      PSEQ            NUMBER(10)        NOT NULL    PRIMARY KEY 
+    , TITLE           VARCHAR2(100)                              
+    , PERIOD          VARCHAR(100)                               
+    , EVENTPERIOD     VARCHAR(100)                                 
+    , EVENTSITE       VARCHAR(100)                                
+    , CHARGE          VARCHAR(100)                                 
+    , CONTACTPOINT    VARCHAR2(100)                               
+    , URL             VARCHAR(1000)                                
+    , IMAGEOBJECT     VARCHAR(100)                              
+    , DESCRIPTION     VARCHAR2(1000)                           
+    , VIEWCOUNT       VARCHAR(1000)                               
+    , REGDATE         DATE                                        
+)
+;
+
+COMMENT ON TABLE CULTURE_API IS '문화API';
+COMMENT ON COLUMN CULTURE_API.PSEQ IS '컨텐츠PK';
+COMMENT ON COLUMN CULTURE_API.TITLE IS '제목';
+COMMENT ON COLUMN CULTURE_API.PERIOD IS '기간';
+COMMENT ON COLUMN CULTURE_API.EVENTPERIOD IS '시간';
+COMMENT ON COLUMN CULTURE_API.EVENTSITE IS '장소';
+COMMENT ON COLUMN CULTURE_API.CHARGE IS '금액';
+COMMENT ON COLUMN CULTURE_API.CONTACTPOINT IS '문의안내';
+COMMENT ON COLUMN CULTURE_API.URL IS 'URL';
+COMMENT ON COLUMN CULTURE_API.IMAGEOBJECT IS '이미지(썸네일)';
+COMMENT ON COLUMN CULTURE_API.DESCRIPTION IS '설명';
+COMMENT ON COLUMN CULTURE_API.VIEWCOUNT IS '조회수';
+COMMENT ON COLUMN CULTURE_API.REGDATE IS '등록일자';
