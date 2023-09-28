@@ -13,7 +13,7 @@ import side.project.publicapi.util.HttpConnection;
 import side.project.publicapi.vo.CultureApiVO;
 
 public class ApiScheduler {
-   ApplicationContextProvider ApplicationContextProvider = new ApplicationContextProvider();
+   
    CultureApiService cultureApiService = (CultureApiService) ApplicationContextProvider.getApplicationContext().getBean(CultureApiService.class);
    
    public void cultureApi(String method) throws Exception {
@@ -49,23 +49,34 @@ public class ApiScheduler {
          String urlStr = (String)jsonList.get("url");
          //http://www.mcst.go.kr/web/s_culture/culture/cultureView.jsp?pSeq=12741
          int index = urlStr.indexOf("pSeq=");
-         String seqResult = urlStr.substring(index + 4, urlStr.length());
+         String seqResult = urlStr.substring(index + 5, urlStr.length());
          cpVO.setPSeq(seqResult);
          
          if(cultureApiService.seqCheck(seqResult) == 1)  // 있는 데이터는 손 안본다.
             break;
-
-         cpVO.setTitle((String)jsonList.get("title"));
-         cpVO.setPeriod((String)jsonList.get("period"));
-         cpVO.setEventPeriod((String)jsonList.get("eventPeriod"));
-         cpVO.setEventSite((String)jsonList.get("eventSite"));
-         cpVO.setCharge((String)jsonList.get("charge"));
-         cpVO.setContactPoint((String)jsonList.get("contactPoint"));
-         cpVO.setUrl((String)jsonList.get("url"));
-         cpVO.setImageObject((String)jsonList.get("imageObject"));
-         cpVO.setDescription((String)jsonList.get("description"));
-         cpVO.setViewCount((String)jsonList.get("viewCount"));
-
+         //VO.class에서 한번에 담을 수 있도록 준비
+         cpVO = new CultureApiVO.Builder(seqResult)
+                                 .title((String)jsonList.get("title"))
+                                 .period((String)jsonList.get("period"))
+                                 .eventPeriod((String)jsonList.get("eventPeriod"))
+                                 .eventSite((String)jsonList.get("eventSite"))
+                                 .charge((String)jsonList.get("charge"))
+                                 .contactPoint((String)jsonList.get("contactPoint"))
+                                 .url((String)jsonList.get("url"))
+                                 .imageObject((String)jsonList.get("imageObject"))
+                                 .description((String)jsonList.get("description"))
+                                 .viewCount((String)jsonList.get("viewCount"))
+                                 .build();
+         // cpVO.setTitle((String)jsonList.get("title"));
+         // cpVO.setPeriod((String)jsonList.get("period"));
+         // cpVO.setEventPeriod((String)jsonList.get("eventPeriod"));
+         // cpVO.setEventSite((String)jsonList.get("eventSite"));
+         // cpVO.setCharge((String)jsonList.get("charge"));
+         // cpVO.setContactPoint((String)jsonList.get("contactPoint"));
+         // cpVO.setUrl((String)jsonList.get("url"));
+         // cpVO.setImageObject((String)jsonList.get("imageObject"));
+         // cpVO.setDescription((String)jsonList.get("description"));
+         // cpVO.setViewCount((String)jsonList.get("viewCount"));
          cultureApiService.cultureInsert(cpVO);
       }
 

@@ -30,18 +30,18 @@ zipStorePath=wrapper/dists
 
 # 230924
 CREATE TABLE CULTURE_API {
-      PSEQ            NUMBER(10)        NOT NULL    PRIMARY KEY     COMMENT ''
-    , TITLE           VARCHAR2(100)                                 COMMENT ''
-    , PERIOD          VARCHAR(100)                                  COMMENT ''
-    , EVENTPERIOD     VARCHAR(100)                                  COMMENT ''
-    , EVENTSITE       VARCHAR(100)                                  COMMENT ''
-    , CHARGE          VARCHAR(100)                                  COMMENT ''
-    , CONTACTPOINT    VARCHAR2(100)                                 COMMENT ''
-    , URL             VARCHAR(1000)                                 COMMENT ''
-    , IMAGEOBJECT     VARCHAR(100)                                  COMMENT ''
-    , DESCRIPTION     VARCHAR2(100000)                              COMMENT ''
-    , VIEWCOUNT       VARCHAR(1000)                                 COMMENT ''
-    , REGDATE         DATE
+      PSEQ            NUMBER(10)        NOT NULL    PRIMARY KEY     COMMENT '컨텐츠PK'
+    , TITLE           VARCHAR2(100)                                 COMMENT '제목'
+    , PERIOD          VARCHAR(100)                                  COMMENT '기간'
+    , EVENTPERIOD     VARCHAR(100)                                  COMMENT '시간'
+    , EVENTSITE       VARCHAR(100)                                  COMMENT '장소'
+    , CHARGE          VARCHAR(100)                                  COMMENT '금액'
+    , CONTACTPOINT    VARCHAR2(100)                                 COMMENT '문의안내'
+    , URL             VARCHAR(1000)                                 COMMENT 'URL'
+    , IMAGEOBJECT     VARCHAR(100)                                  COMMENT '이미지(썸네일)'
+    , DESCRIPTION     VARCHAR2(100000)                              COMMENT '설명'
+    , VIEWCOUNT       VARCHAR(1000)                                 COMMENT '조회수'
+    , REGDATE         DATE                                          COMMENT '등록일자'
 }
 
 # 230926

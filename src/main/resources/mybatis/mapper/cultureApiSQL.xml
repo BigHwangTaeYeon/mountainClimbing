@@ -6,9 +6,9 @@
 <mapper namespace="side.project.publicapi.dao.cultureApiDAO">
 	
 	<!-- 뉴스 조회 -->
-	<select id="seqCheck" parameterType="String" resultType="int">
+	<select id="seqCheck" parameterType="String" resultType="Integer">
 		SELECT
-            *
+            PSEQ
         FROM
             CULTURE_API
         WHERE

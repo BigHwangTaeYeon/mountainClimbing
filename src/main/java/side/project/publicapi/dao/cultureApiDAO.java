@@ -14,7 +14,11 @@ public class CultureApiDAO {
 
     // pSeqCheck
 	public int seqCheck(String seq) throws Exception{
-		return sqlSession.selectOne("cultureApiDAO.seqCheck", seq);
+		// return sqlSession.selectOne("cultureApiDAO.seqCheck", seq);
+		if(sqlSession.selectOne("cultureApiDAO.seqCheck", seq) != null)
+			return 1;
+		else
+			return 0;
 	}
 
 	public void cutureInsert(CultureApiVO vo) throws Exception{
