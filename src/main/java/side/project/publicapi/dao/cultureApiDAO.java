@@ -3,6 +3,7 @@ package side.project.publicapi.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
 
 import side.project.publicapi.vo.CultureApiVO;
 
@@ -13,12 +14,11 @@ public class CultureApiDAO {
 	private SqlSessionTemplate sqlSession;
 
     // pSeqCheck
-	public int seqCheck(String seq) throws Exception{
-		// return sqlSession.selectOne("cultureApiDAO.seqCheck", seq);
-		if(sqlSession.selectOne("cultureApiDAO.seqCheck", seq) != null)
-			return 1;
-		else
+	public int seqCheck(int p_seq) throws Exception{
+		if(ObjectUtils.isEmpty((int)sqlSession.selectOne("cultureApiDAO.seqCheck", p_seq)))
 			return 0;
+		else
+			return 1;
 	}
 
 	public void cutureInsert(CultureApiVO vo) throws Exception{

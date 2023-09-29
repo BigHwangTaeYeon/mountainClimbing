@@ -12,7 +12,7 @@ spring:
       enabled: true
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@112.65.186.215:1521:hwang
+    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
     username: hwang
     password: rootoor
 

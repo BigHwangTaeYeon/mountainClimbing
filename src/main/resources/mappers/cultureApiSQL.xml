@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="cultureApiDAO">
+	
+	<select id="seqCheck" parameterType="int" resultType="Integer">
+        SELECT
+            PSEQ
+        FROM
+            CULTURE_API
+        WHERE
+            1=1
+            AND PSEQ = #{p_seq}
+	</select>
+
+	<insert id="cutureInsert" parameterType="side.project.publicapi.vo.CultureApiVO">
+		INSERT INTO CULTURE_API (
+            PSEQ         
+          , TITLE        
+          , PERIOD       
+          , EVENTPERIOD  
+          , EVENTSITE    
+          , CHARGE       
+          , CONTACTPOINT 
+          , URL          
+          , IMAGEOBJECT  
+          , DESCRIPTION  
+          , VIEWCOUNT    
+          , REGDATE
+		) VALUES (
+            #{p_seq}
+          , #{title,jdbcType=VARCHAR}
+          , #{period,jdbcType=VARCHAR}
+          , #{event_period,jdbcType=VARCHAR}
+          , #{event_site,jdbcType=VARCHAR}
+          , #{charge,jdbcType=VARCHAR}
+          , #{contact_point,jdbcType=VARCHAR}
+          , #{url,jdbcType=VARCHAR}
+          , #{image_object,jdbcType=VARCHAR}
+          , #{description,jdbcType=VARCHAR}
+          , #{view_count,jdbcType=VARCHAR}
+          , sysdate
+		)
+	</insert>
+
+</mapper>

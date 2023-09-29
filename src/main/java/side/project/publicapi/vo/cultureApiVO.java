@@ -6,82 +6,82 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CultureApiVO {
-    private String pSeq;
+    private int p_seq;
     private String title;
     private String period;
-    private String eventPeriod;
-    private String eventSite;
+    private String event_period;
+    private String event_site;
     private String charge;
-    private String contactPoint;
+    private String contact_point;
     private String url;
-    private String imageObject;
+    private String image_object;
     private String description;
-    private String viewCount;
-    private String regDate;
+    private String view_count;
+    private String reg_date;
 
-    private String numOfRows;
-    private String pageNo;
-    private String totalCount;
+    private String num_of_rows;
+    private String page_no;
+    private String total_count;
 
     //Efective java Builder
     public static class Builder{
-        private String pSeq;
+        private int p_seq;
 
         private String title = "";
         private String period = "";
-        private String eventPeriod = "";
-        private String eventSite = "";
+        private String event_period = "";
+        private String event_site = "";
         private String charge = "";
-        private String contactPoint = "";
+        private String contact_point = "";
         private String url = "";
-        private String imageObject = "";
+        private String image_object = "";
         private String description = "";
-        private String viewCount = "";
-        private String regDate = "";
+        private String view_count = "";
+        private String reg_date = "";
 
-        public Builder(String pSeq){
-            this.pSeq = pSeq;
+        public Builder(int p_seq){
+            this.p_seq = p_seq;
         }
         public Builder title(String val)
             {title = val; return this;}
         public Builder period(String val)
             {period = val; return this;}
-        public Builder eventPeriod(String val)
-            {eventPeriod = val; return this;}
-        public Builder eventSite(String val)
-            {eventSite = val; return this;}
+        public Builder event_period(String val)
+            {event_period = val; return this;}
+        public Builder event_site(String val)
+            {event_site = val; return this;}
         public Builder charge(String val)
             {charge = val; return this;}
-        public Builder contactPoint(String val)
-            {contactPoint = val; return this;}
+        public Builder contact_point(String val)
+            {contact_point = val; return this;}
         public Builder url(String val)
             {url = val; return this;}
-        public Builder imageObject(String val)
-            {imageObject = val; return this;}
+        public Builder image_object(String val)
+            {image_object = val; return this;}
         public Builder description(String val)
             {description = val; return this;}
-        public Builder viewCount(String val)
-            {viewCount = val; return this;}
-        public Builder regDate(String val)
-            {regDate = val; return this;}
+        public Builder view_count(String val)
+            {view_count = val; return this;}
+        public Builder reg_date(String val)
+            {reg_date = val; return this;}
         
         public CultureApiVO build() {
             return new CultureApiVO(this);
         }
     }
     private CultureApiVO (Builder builder){
-        pSeq = builder.pSeq;
+        p_seq = builder.p_seq;
         title = builder.title;
         period = builder.period;
-        eventPeriod = builder.eventPeriod;
-        eventSite = builder.eventSite;
+        event_period = builder.event_period;
+        event_site = builder.event_site;
         charge = builder.charge;
-        contactPoint = builder.contactPoint;
+        contact_point = builder.contact_point;
         url = builder.url;
-        imageObject = builder.imageObject;
+        image_object = builder.image_object;
         description = builder.description;
-        viewCount = builder.viewCount;
-        regDate = builder.regDate;
+        view_count = builder.view_count;
+        reg_date = builder.reg_date;
     }
     public CultureApiVO() {
     }
