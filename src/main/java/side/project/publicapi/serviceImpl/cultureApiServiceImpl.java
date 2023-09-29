@@ -1,5 +1,8 @@
 package side.project.publicapi.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,10 @@ public class CultureApiServiceImpl implements CultureApiService {
     // data insert
     public void cultureInsert(CultureApiVO vo) throws Exception{
 		cultuerDao.cutureInsert(vo);
+	}
+	 
+	public List<CultureApiVO> getCultureList() throws Exception{
+		return cultuerDao.getCultureList();
 	}
 
 }

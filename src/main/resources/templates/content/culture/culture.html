@@ -2,19 +2,19 @@
     <thead>
         <tr>
             <th>제목</th>
-            <th>장소</th>
-            <th>시간</th>
+            <th>기간</th>
             <th>금액</th>
             <th>문의안내</th>
+            <th>URL</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>첫 글</td>
-            <td>#java</td>
-            <td>jyc</td>
-            <td>2022-01-01</td>
-            <td>2022-01-01</td>
+        <tr th:each="culture : ${getCultureList}">
+            <td th:text="${culture.title}"></td>
+            <td th:text="${culture.period}"></td>
+            <td th:text="${culture.charge}"></td>
+            <td th:text="${culture.contact_point}"></td>
+            <td th:text="${culture.url}"></td>
         </tr>
     </tbody>
 </table>

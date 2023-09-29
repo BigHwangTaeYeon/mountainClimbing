@@ -17,7 +17,7 @@ public class CultureApiVO {
     private String image_object;
     private String description;
     private String view_count;
-    private String reg_date;
+    private String regdate;
 
     private String num_of_rows;
     private String page_no;
@@ -37,7 +37,7 @@ public class CultureApiVO {
         private String image_object = "";
         private String description = "";
         private String view_count = "";
-        private String reg_date = "";
+        private String regdate = "";
 
         public Builder(int p_seq){
             this.p_seq = p_seq;
@@ -62,8 +62,8 @@ public class CultureApiVO {
             {description = val; return this;}
         public Builder view_count(String val)
             {view_count = val; return this;}
-        public Builder reg_date(String val)
-            {reg_date = val; return this;}
+        public Builder regdate(String val)
+            {regdate = val; return this;}
         
         public CultureApiVO build() {
             return new CultureApiVO(this);
@@ -81,7 +81,7 @@ public class CultureApiVO {
         image_object = builder.image_object;
         description = builder.description;
         view_count = builder.view_count;
-        reg_date = builder.reg_date;
+        regdate = builder.regdate;
     }
     public CultureApiVO() {
     }

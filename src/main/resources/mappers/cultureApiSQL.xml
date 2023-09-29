@@ -5,6 +5,26 @@
 	
 <mapper namespace="cultureApiDAO">
 	
+	<select id="getCultureList" resultType="side.project.publicapi.vo.CultureApiVO">
+        SELECT
+              PSEQ AS P_SEQ
+            , TITLE AS TITLE 
+            , PERIOD AS PERIOD
+            , EVENTPERIOD AS EVENT_PERIOD
+            , EVENTSITE AS EVENT_SITE
+            , CHARGE AS CHARGE
+            , CONTACTPOINT AS CONTACT_POINT
+            , URL AS URL
+            , IMAGEOBJECT AS IMAGE_OBJECT
+            , DESCRIPTION AS DESCRIPTION
+            , VIEWCOUNT AS VIEW_COUNT
+            , REGDATE AS REGDATE
+        FROM
+            CULTURE_API
+        WHERE
+            1=1
+	</select>
+
 	<select id="seqCheck" parameterType="int" resultType="Integer">
         SELECT
             PSEQ

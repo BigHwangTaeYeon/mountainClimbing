@@ -1,5 +1,8 @@
 package side.project.publicapi.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +26,10 @@ public class CultureApiDAO {
 
 	public void cutureInsert(CultureApiVO vo) throws Exception{
 		sqlSession.insert("cultureApiDAO.cutureInsert", vo);
+	}
+
+	public List<CultureApiVO> getCultureList() throws Exception{
+		return sqlSession.selectList("cultureApiDAO.getCultureList");
 	}
 
 }
