@@ -14,7 +14,7 @@
             <td th:text="${culture.period}"></td>
             <td th:text="${culture.charge}"></td>
             <td th:text="${culture.contact_point}"></td>
-            <td th:text="${culture.url}"></td>
+            <td><a th:href="@{${culture.url}}">이동</a></td>
         </tr>
     </tbody>
 </table>

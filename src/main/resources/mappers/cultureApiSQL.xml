@@ -7,7 +7,8 @@
 	
 	<select id="getCultureList" resultType="side.project.publicapi.vo.CultureApiVO">
         SELECT
-              PSEQ AS P_SEQ
+              ROWNUM
+            , PSEQ AS P_SEQ
             , TITLE AS TITLE 
             , PERIOD AS PERIOD
             , EVENTPERIOD AS EVENT_PERIOD
@@ -23,6 +24,9 @@
             CULTURE_API
         WHERE
             1=1
+            <![CDATA[
+                AND ROWNUM <= #{pageNum} * #{amount}
+            ]]>
 	</select>
 
 	<select id="seqCheck" parameterType="int" resultType="Integer">

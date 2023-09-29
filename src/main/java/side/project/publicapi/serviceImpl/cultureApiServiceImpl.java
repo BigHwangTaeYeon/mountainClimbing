@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import side.project.publicapi.dao.CultureApiDAO;
 import side.project.publicapi.service.CultureApiService;
 import side.project.publicapi.vo.CultureApiVO;
+import side.project.publicapi.vo.Paging;
 
 @Service
 public class CultureApiServiceImpl implements CultureApiService {
@@ -26,8 +27,8 @@ public class CultureApiServiceImpl implements CultureApiService {
 		cultuerDao.cutureInsert(vo);
 	}
 	 
-	public List<CultureApiVO> getCultureList() throws Exception{
-		return cultuerDao.getCultureList();
+	public List<CultureApiVO> getCultureList(Paging pg) throws Exception{
+		return cultuerDao.getCultureList(pg);
 	}
 
 }

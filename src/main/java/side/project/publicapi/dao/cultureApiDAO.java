@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 
 import side.project.publicapi.vo.CultureApiVO;
+import side.project.publicapi.vo.Paging;
 
 @Repository("cultureApiDAO")
 public class CultureApiDAO {
@@ -28,8 +29,8 @@ public class CultureApiDAO {
 		sqlSession.insert("cultureApiDAO.cutureInsert", vo);
 	}
 
-	public List<CultureApiVO> getCultureList() throws Exception{
-		return sqlSession.selectList("cultureApiDAO.getCultureList");
+	public List<CultureApiVO> getCultureList(Paging pg) throws Exception{
+		return sqlSession.selectList("cultureApiDAO.getCultureList", pg);
 	}
 
 }
