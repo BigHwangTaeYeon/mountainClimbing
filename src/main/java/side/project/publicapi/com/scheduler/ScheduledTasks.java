@@ -1,4 +1,4 @@
-package side.project.publicapi.scheduler;
+package side.project.publicapi.com.scheduler;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

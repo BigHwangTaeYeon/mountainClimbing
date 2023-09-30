@@ -1,4 +1,4 @@
-package side.project.publicapi.config;
+package side.project.publicapi.com.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

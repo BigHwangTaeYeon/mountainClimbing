@@ -1,4 +1,4 @@
-package side.project.publicapi.vo;
+package side.project.publicapi.mvc.vo;
 
 import lombok.Getter;
 import lombok.Setter;

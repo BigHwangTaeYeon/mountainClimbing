@@ -1,4 +1,4 @@
-package side.project.publicapi.config;
+package side.project.publicapi.com.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

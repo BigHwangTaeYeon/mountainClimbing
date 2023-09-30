@@ -112,3 +112,43 @@ COMMENT ON COLUMN CULTURE_API.REGDATE IS '등록일자';
 ORACLE 3개월마다 비밀번호 변경 해야함.
 아래 명령으로 만료가 되지 않도록 설정.
 ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
+
+# 230930
+API TABLE 수정
+CREATE TABLE CULTURE_API (
+      PSEQ            NUMBER(10)        NOT NULL    PRIMARY KEY 
+    , TITLE           VARCHAR2(4000)                              
+    , PERIOD          VARCHAR(100)                               
+    , EVENTPERIOD     VARCHAR(100)                                 
+    , EVENTSITE       VARCHAR(100)                                
+    , CHARGE          VARCHAR(100)                                 
+    , CONTACTPOINT    VARCHAR2(4000)                               
+    , URL             VARCHAR(1000)                                
+    , IMAGEOBJECT     VARCHAR(100)                              
+    , DESCRIPTION     VARCHAR(4000)                           
+    , VIEWCOUNT       VARCHAR(1000)                               
+    , REGDATE         DATE                                        
+)
+;
+(https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/)
+Spring 데이터 릴리스 트레인	/ 스프링 데이터 Elasticsearch	/ 엘라스틱서치	/ 스프링 프레임워크	/ 스프링 부트
+2023.0 (울만)                   5.1.x                           8.7.1               6.0.x           3.1.x
+2022.0(튜링)                    5.0.x                           8.5.3               6.0.x           3.0.x
+
+version
+elasticsearch-7.10.2
+boot 3.0.x
+
+JPA를 공부하지 않은 상태로 엘라스틱서치 연동이 힘들었다.
+최대한 가벼운 설정으로 적용하였으며, JPA 공부 후 커스텀을 하는 것이 좋을 것 같다.
+    implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:6.5.3')
+    implementation('org.elasticsearch:elasticsearch:6.5.3')
+	implementation('org.springframework.boot:spring-boot-starter-webflux')
+Spring WebFlux는 Spring 5에서 새롭게 추가된 모듈이다.
+WebFlux는 클라이언트, 서버에서 reactive 스타일의 어플리케이션 개발을 도와주는 모듈이며, 
+reactive-stack web framework이며 non-blocking에 reactive stream을 지원합니다.
+
+https://devuna.tistory.com/120
+https://velog.io/@zenon8485/Reactor-Java-1.-Mono%EC%99%80-Flux%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
+기본 개념
+

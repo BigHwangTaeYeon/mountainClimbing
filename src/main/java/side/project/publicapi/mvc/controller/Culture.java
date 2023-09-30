@@ -1,4 +1,4 @@
-package side.project.publicapi.controller;
+package side.project.publicapi.mvc.controller;
 
 import java.util.List;
 
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import side.project.publicapi.service.CultureApiService;
-import side.project.publicapi.util.HttpConnection;
-import side.project.publicapi.vo.CultureApiVO;
-import side.project.publicapi.vo.Paging;
+import side.project.publicapi.com.util.HttpConnection;
+import side.project.publicapi.mvc.service.CultureApiService;
+import side.project.publicapi.mvc.vo.CultureApiVO;
+import side.project.publicapi.mvc.vo.Paging;
 
 @Controller
 @RequestMapping("/api")

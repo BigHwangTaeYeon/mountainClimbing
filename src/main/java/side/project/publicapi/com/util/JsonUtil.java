@@ -1,4 +1,4 @@
-package side.project.publicapi.util;
+package side.project.publicapi.com.util;
 
 import java.io.IOException;
 import java.util.ArrayList;

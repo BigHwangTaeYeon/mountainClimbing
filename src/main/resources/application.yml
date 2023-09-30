@@ -15,6 +15,17 @@ spring:
     url: jdbc:oracle:thin:@127.0.0.1:1521:XE
     username: hwang
     password: rootoor
+  # data:
+  #   elasticsearch:
+  #     cluster-nodes: localhost:9300
+  #     cluster-name: my-cluster
+
+elasticsearch:
+  port: 9300
+  host: localhost
+  clustername: hwang-cluster
+
+
 
 server:
   port: 8050
@@ -29,3 +40,4 @@ api:
 thread:
   pool:
     size: 2
+

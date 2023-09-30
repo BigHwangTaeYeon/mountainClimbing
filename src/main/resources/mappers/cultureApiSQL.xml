@@ -5,7 +5,7 @@
 	
 <mapper namespace="cultureApiDAO">
 	
-	<select id="getCultureList" resultType="side.project.publicapi.vo.CultureApiVO">
+	<select id="getCultureList" resultType="side.project.publicapi.mvc.vo.CultureApiVO">
         SELECT
               ROWNUM
             , PSEQ AS P_SEQ
@@ -39,7 +39,7 @@
             AND PSEQ = #{p_seq}
 	</select>
 
-	<insert id="cutureInsert" parameterType="side.project.publicapi.vo.CultureApiVO">
+	<insert id="cutureInsert" parameterType="side.project.publicapi.mvc.vo.CultureApiVO">
 		INSERT INTO CULTURE_API (
             PSEQ         
           , TITLE        

@@ -1,6 +1,5 @@
-package side.project.publicapi.dao;
+package side.project.publicapi.mvc.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 
-import side.project.publicapi.vo.CultureApiVO;
-import side.project.publicapi.vo.Paging;
+import side.project.publicapi.mvc.vo.CultureApiVO;
+import side.project.publicapi.mvc.vo.Paging;
 
 @Repository("cultureApiDAO")
 public class CultureApiDAO {
@@ -19,7 +18,8 @@ public class CultureApiDAO {
 
     // pSeqCheck
 	public int seqCheck(int p_seq) throws Exception{
-		if(ObjectUtils.isEmpty((int)sqlSession.selectOne("cultureApiDAO.seqCheck", p_seq)))
+		Object result = sqlSession.selectOne("cultureApiDAO.seqCheck", p_seq);
+		if(ObjectUtils.isEmpty(result))
 			return 0;
 		else
 			return 1;

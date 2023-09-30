@@ -1,4 +1,4 @@
-package side.project.publicapi.scheduler;
+package side.project.publicapi.com.scheduler;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

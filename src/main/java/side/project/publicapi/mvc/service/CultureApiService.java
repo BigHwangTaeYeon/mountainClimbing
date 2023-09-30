@@ -1,9 +1,9 @@
-package side.project.publicapi.service;
+package side.project.publicapi.mvc.service;
 
 import java.util.List;
 
-import side.project.publicapi.vo.CultureApiVO;
-import side.project.publicapi.vo.Paging;
+import side.project.publicapi.mvc.vo.CultureApiVO;
+import side.project.publicapi.mvc.vo.Paging;
 
 public interface CultureApiService {
     

@@ -1,4 +1,4 @@
-package side.project.publicapi.config;
+package side.project.publicapi.com.config;
 
 import java.util.HashSet;
 import java.util.Set;

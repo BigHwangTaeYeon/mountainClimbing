@@ -1,4 +1,4 @@
-package side.project.publicapi.scheduler;
+package side.project.publicapi.com.scheduler;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -6,12 +6,14 @@ import java.util.Calendar;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.transaction.annotation.Transactional;
 
-import side.project.publicapi.config.ApplicationContextProvider;
-import side.project.publicapi.service.CultureApiService;
-import side.project.publicapi.util.HttpConnection;
-import side.project.publicapi.vo.CultureApiVO;
+import side.project.publicapi.com.config.ApplicationContextProvider;
+import side.project.publicapi.com.util.HttpConnection;
+import side.project.publicapi.mvc.service.CultureApiService;
+import side.project.publicapi.mvc.vo.CultureApiVO;
 
+@Transactional
 public class ApiScheduler {
    
    CultureApiService cultureApiService = (CultureApiService) ApplicationContextProvider.getApplicationContext().getBean(CultureApiService.class);
@@ -21,7 +23,7 @@ public class ApiScheduler {
       String cultureKey = "e4cad89f-ee3b-4062-b13e-60734d47a93c";
 
 		url += "?serviceKey=" + cultureKey;
-		url += "&numOfRows=" + 100;
+		url += "&numOfRows=" + 5000;
 		url += "&pageNo=" + 1;
 
       String httpConResult = HttpConnection.httpTestByMethod(url, method);

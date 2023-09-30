@@ -1,4 +1,4 @@
-package side.project.publicapi.util;
+package side.project.publicapi.com.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

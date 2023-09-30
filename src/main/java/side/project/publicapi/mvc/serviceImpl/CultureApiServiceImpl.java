@@ -1,15 +1,14 @@
-package side.project.publicapi.serviceImpl;
+package side.project.publicapi.mvc.serviceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import side.project.publicapi.dao.CultureApiDAO;
-import side.project.publicapi.service.CultureApiService;
-import side.project.publicapi.vo.CultureApiVO;
-import side.project.publicapi.vo.Paging;
+import side.project.publicapi.mvc.dao.CultureApiDAO;
+import side.project.publicapi.mvc.service.CultureApiService;
+import side.project.publicapi.mvc.vo.CultureApiVO;
+import side.project.publicapi.mvc.vo.Paging;
 
 @Service
 public class CultureApiServiceImpl implements CultureApiService {
