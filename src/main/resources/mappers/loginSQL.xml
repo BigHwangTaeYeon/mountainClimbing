@@ -5,15 +5,18 @@
 	
 <mapper namespace="loginDAO">
 
-    <select id="loginCheck" parameterType="side.project.publicapi.mvc.vo.LoginVO">
+    <select id="loginCheck" parameterType="side.project.publicapi.mvc.vo.LoginVO" resultType="side.project.publicapi.mvc.vo.LoginVO">
         SELECT
-            *
+              ID
+            , PW
+            , EMAIL
+            , REGDATE
         FROM
             LOGIN
         WHERE
             1=1
             AND ID = #{id}
-            <if>
+            <if test="pw != null and pw != ''">
             AND PW = #{pw}
             </if>
     </select>

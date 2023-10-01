@@ -1,16 +1,11 @@
 package side.project.publicapi.mvc.controller;
 
-import org.elasticsearch.discovery.zen.MembershipAction.JoinRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -23,6 +18,7 @@ import side.project.publicapi.mvc.vo.LoginVO;;
 @RequestMapping("/login")
 public class LoginController {
     
+    @Autowired
     LoginService loginService;
     
     @RequestMapping("/createId")
@@ -30,19 +26,21 @@ public class LoginController {
         int check = loginService.loginCheck(vo);
         if(check == 0)
             loginService.loginInsert(vo);
+        // else
+            // bindingResult.reject("createFail", "입력하신 아이디는 이미 사용되고 있습니다.");
     }
 
     @PostMapping("/login")
-    public String login(BindingResult bindingResult, LoginVO vo, HttpServletRequest httpServletRequest, Model model) throws Exception {
+    public String login(LoginVO vo, HttpServletRequest httpServletRequest, Model model) throws Exception {
 
         String user = loginService.getLoginId(vo);
 
         // 로그인 아이디나 비밀번호가 틀린 경우 global error return
         if(user == null) 
-            bindingResult.reject("loginFail", "로그인 아이디 또는 비밀번호가 틀렸습니다.");
+            // bindingResult.reject("loginFail", "로그인 아이디 또는 비밀번호가 틀렸습니다.");
 
-        if(bindingResult.hasErrors()) 
-            return "login";
+        // if(bindingResult.hasErrors()) 
+        //     return "login";
 
         // 로그인 성공 => 세션 생성
 
@@ -58,8 +56,6 @@ public class LoginController {
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, Model model) {
-        model.addAttribute("loginType", "session-login");
-        model.addAttribute("pageName", "세션 로그인");
 
         HttpSession session = request.getSession(false);  // Session이 없으면 null return
         if(session != null) 

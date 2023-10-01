@@ -155,3 +155,10 @@ https://velog.io/@zenon8485/Reactor-Java-1.-Mono%EC%99%80-Flux%EB%A5%BC-%EC%83%9
 # 231001
 elastic search version & java version
 https://www.elastic.co/kr/support/matrix#matrix_jvm
+
+AES 암호화/복호화 사용
+javax.crypto.Cipher 클래스는 암호화 알고리즘을 나타낸다.
+암호를 사용하여 데이터를 암호화하거나 복호화할 수 있다.
+아래와 같이 암호화 알고리즘, 운용 방식 그리고 패딩 방식을 전달해 Cipher 인스턴스를 만들 수 있다.
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+https://aday7.tistory.com/entry/Java-AES-%EC%95%94%ED%98%B8%ED%99%94%EB%B3%B5%ED%98%B8%ED%99%94-%EC%98%88%EC%A0%9C-AES-256
