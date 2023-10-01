@@ -152,3 +152,6 @@ https://devuna.tistory.com/120
 https://velog.io/@zenon8485/Reactor-Java-1.-Mono%EC%99%80-Flux%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
 기본 개념
 
+# 231001
+elastic search version & java version
+https://www.elastic.co/kr/support/matrix#matrix_jvm

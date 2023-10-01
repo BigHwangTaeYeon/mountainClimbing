@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="loginDAO">
+
+    <select id="loginCheck" parameterType="side.project.publicapi.mvc.vo.LoginVO">
+        SELECT
+            *
+        FROM
+            LOGIN
+        WHERE
+            1=1
+            AND ID = #{id}
+            <if>
+            AND PW = #{pw}
+            </if>
+    </select>
+
+	<insert id="loginInsert" parameterType="side.project.publicapi.mvc.vo.LoginVO">
+		INSERT INTO LOGIN (
+            ID         
+          , PW        
+          , EMAIL       
+          , REGDATE
+		) VALUES (
+            #{id}
+          , #{pw}
+          , #{email}
+          , sysdate
+		)
+	</insert>
+
+</mapper>
