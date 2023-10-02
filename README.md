@@ -162,3 +162,12 @@ javax.crypto.Cipher 클래스는 암호화 알고리즘을 나타낸다.
 아래와 같이 암호화 알고리즘, 운용 방식 그리고 패딩 방식을 전달해 Cipher 인스턴스를 만들 수 있다.
 Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 https://aday7.tistory.com/entry/Java-AES-%EC%95%94%ED%98%B8%ED%99%94%EB%B3%B5%ED%98%B8%ED%99%94-%EC%98%88%EC%A0%9C-AES-256
+
+# 231002
+엘라스틱서치 7.10.2 맞추기 위해 open JDK 11로 세팅했다.
+분명 문서에는 openJDK 1.8도 된다 하는데, 실행 시 11을 요구한다..
+
+https://devhan.tistory.com/310#ViewController%20%EC%83%9D%EC%84%B1-1
+스프링부트 3.X 스프링 시큐리티 사용해서 회원가입, 로그인, 로그아웃 구현하기
+스프링에서 제공하는 시큐리티 기능을 많이 사용한다.
+정리해서 보고 이해하는 것이 좋을 것 같다.

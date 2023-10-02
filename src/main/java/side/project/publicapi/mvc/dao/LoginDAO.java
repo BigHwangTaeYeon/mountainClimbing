@@ -6,12 +6,17 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 
 import side.project.publicapi.mvc.vo.LoginVO;
+import side.project.publicapi.mvc.vo.User;
 
 @Repository("loginDAO")
 public class LoginDAO {
 
     @Autowired
 	private SqlSessionTemplate sqlSession;
+
+	public User getLoginInfo(String id) {
+		return sqlSession.selectOne("loginDAO.loginCheck", id);
+	}
 
 	public int loginCheck(LoginVO vo) throws Exception{
 		Object result = sqlSession.selectOne("loginDAO.loginCheck", vo);
