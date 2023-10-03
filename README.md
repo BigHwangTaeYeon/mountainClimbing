@@ -175,3 +175,5 @@ https://devhan.tistory.com/310#ViewController%20%EC%83%9D%EC%84%B1-1
 # 231003
 시큐리티 재작업 
 https://velog.io/@wooryung/Spring-Boot-Spring-Security%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%98%EC%97%AC-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
+시큐리티 보안 작동은 가능하나, 로그인 후 다른 페이지 이동 불가.
+인가 문제인듯
