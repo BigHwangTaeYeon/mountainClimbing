@@ -1,12 +1,12 @@
-package side.project.publicapi.mvc.controller;
+package side.project.publicapi.mvc.controller.manage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,38 +18,32 @@ import side.project.publicapi.mvc.vo.LoginVO;;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/login")
+@RequestMapping
 public class SecurityLoginController {
     
     @Autowired
     LoginService loginService;
-    
+
     // ID 생성
-    @RequestMapping("/createId")
-    public String createId (LoginVO vo) throws Exception{
+    @PostMapping("/createId")
+    public String createId (@RequestBody LoginVO vo) throws Exception{
         int check = loginService.loginCheck(vo);
         if(check == 0)
             loginService.loginInsert(vo);
         // else
             // bindingResult.reject("createFail", "입력하신 아이디는 이미 사용되고 있습니다.");
-        return "redirect:/login/CreateId";
-    }
-    
-    // LOGIN 화면
-    @RequestMapping("/login")
-    public String loginAA (LoginVO vo) throws Exception{
-        
-        return "/login/success";
+        // return "redirect:login/Login";
+        return "culture/Culture";
     }
 
     // LOGIN 인증 및 세션 부여
-    @PostMapping("/loginA")
-    public String login(LoginVO vo, HttpServletRequest httpServletRequest, Model model) throws Exception {
+    @PostMapping("/signIn")
+    public String login(@RequestBody LoginVO vo, HttpServletRequest httpServletRequest) throws Exception {
 
         String user = loginService.getLoginId(vo);
 
         // 로그인 아이디나 비밀번호가 틀린 경우 global error return
-        if(user == null) 
+        // if(user == null) 
             // bindingResult.reject("loginFail", "로그인 아이디 또는 비밀번호가 틀렸습니다.");
 
         // if(bindingResult.hasErrors()) 
@@ -64,13 +58,14 @@ public class SecurityLoginController {
         session.setAttribute("userId", user);
         // session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
 
-        return "redirect:/login/success";
+        return "/culture/Culture";
     }
 
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response,
                 SecurityContextHolder.getContext().getAuthentication());
-        return "redirect:/ConnectId";
+        return "login/Success";
     }
+
 }

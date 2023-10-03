@@ -1,7 +1,6 @@
 package side.project.publicapi.mvc.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import side.project.publicapi.com.util.AesUtil;
@@ -11,16 +10,13 @@ import side.project.publicapi.mvc.vo.LoginVO;
 
 @Service
 public class LoginServiceImpl implements LoginService {
-	
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
 	private LoginDAO LoginVODao;
 
 	public int loginCheck(LoginVO vo) throws Exception {
-		vo.setPw(bCryptPasswordEncoder.encode(vo.getPw()));
-  		// String encData = AesUtil.aesCBCEncode(vo.getPw());
-		// vo.setPw(encData);
+  		String encData = AesUtil.aesCBCEncode(vo.getPw());
+		vo.setPw(encData);
 		return LoginVODao.loginCheck(vo);
 	}
 
@@ -31,10 +27,15 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String getLoginId(LoginVO vo) throws Exception {
-		vo.setPw(bCryptPasswordEncoder.encode(vo.getPw()));
-  		// String encData = AesUtil.aesCBCEncode(vo.getPw());
-		// vo.setPw(encData);
+  		String encData = AesUtil.aesCBCEncode(vo.getPw());
+		vo.setPw(encData);
 		return LoginVODao.getLoginId(vo);
 	}
 	
+	@Override
+	public LoginVO getLoginInfo(LoginVO vo) throws Exception {
+  		String encData = AesUtil.aesCBCEncode(vo.getPw());
+		vo.setPw(encData);
+		return LoginVODao.getLoginInfo(vo);
+	}
 }

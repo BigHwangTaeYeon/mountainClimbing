@@ -171,3 +171,7 @@ https://devhan.tistory.com/310#ViewController%20%EC%83%9D%EC%84%B1-1
 스프링부트 3.X 스프링 시큐리티 사용해서 회원가입, 로그인, 로그아웃 구현하기
 스프링에서 제공하는 시큐리티 기능을 많이 사용한다.
 정리해서 보고 이해하는 것이 좋을 것 같다.
+
+# 231003
+시큐리티 재작업 
+https://velog.io/@wooryung/Spring-Boot-Spring-Security%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%98%EC%97%AC-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0

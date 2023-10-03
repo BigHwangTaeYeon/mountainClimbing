@@ -6,6 +6,8 @@ public interface LoginService {
 
     String getLoginId(LoginVO vo) throws Exception;
 
+    LoginVO getLoginInfo(LoginVO vo) throws Exception;
+
     int loginCheck(LoginVO vo) throws Exception;
 
     void loginInsert(LoginVO vo) throws Exception;

@@ -1,1 +1,41 @@
-<span style="color: red;">CreateId</span>
+<!DOCTYPE html>
+<!-- Default Layout Import-->
+<html>
+        <head>
+            <title>테스트 페이지 </title>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        </head>
+        <body>
+
+            <span style="color: red;">CreateId</span>
+
+            <div>
+                <div>id : <input type="text" id="id"></div>
+                <div>pw : <input type="text" id="pw"></div>
+                <div>email : <input type="text" id="email"></div>
+                <div><input type="button" value="CreateId" name="create"></div>
+            </div>
+
+            <script>
+                $('input[name="create"]').off('click').on('click', function(){
+                    data = {
+                        id : $('#id').val()
+                        , pw : $('#pw').val()
+                        , email : $('#email').val()
+                    }
+                    $.ajax({ // 컨트롤러와 통신	    			
+                        type: 'POST',
+                        url: "/createId",
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=UTF-8",
+                        success: function(data) {					
+                            alert("성공");
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("ERROR : " + textStatus + " : " + errorThrown);
+                        }		
+                    });
+                })
+            </script>
+        </body>
+</html>

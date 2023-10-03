@@ -9,4 +9,5 @@ public class LoginVO {
     private String id;
     private String pw;
     private String email;
+    private String user_role;
 }

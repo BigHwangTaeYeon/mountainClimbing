@@ -2,65 +2,36 @@ package side.project.publicapi.com.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import lombok.RequiredArgsConstructor;
-import side.project.publicapi.mvc.serviceImpl.SecurityLoginServiceImpl;
-
-@RequiredArgsConstructor
-@EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-        
-    private final SecurityLoginServiceImpl userService;
 
-    // 스프링 시큐리티 기능 비활성화
-    @Bean
-    public WebSecurityCustomizer configure() {
-        return (web) -> web.ignoring()
-                // .requestMatchers(toH2Console())
-                .requestMatchers("/api/**");
-    }
-
-    // 특정 HTTP 요청에 대한 웹 기반 보안 구성
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests()
-                .requestMatchers("/login/createId", "/login/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin() // 폼 기반 로그인 설정
-                .loginPage("/login/login")
-                .defaultSuccessUrl("/api/culture")
-                .and()
-                .logout() // 로그아웃 설정
-                .logoutSuccessUrl("/login/logout")
-                .invalidateHttpSession(true)
-                .and()
-                .csrf().disable() //csrf 비활성화
-                .build();
-    }
-	
-    // 인증 관리자 관련 설정
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() throws Exception {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+// 권한에 따라 허용하는 url 설정
+        // /login, /signup 페이지는 모두 허용, 다른 페이지는 인증된 사용자만 허용
+        http
+            .authorizeRequests()
+            .requestMatchers("/login", "/signup").permitAll()
+            .anyRequest().authenticated();
 
-        daoAuthenticationProvider.setUserDetailsService(userService);
-        daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
+		// login 설정
+        http
+            .formLogin()
+                .loginPage("/login")    // GET 요청 (login form을 보여줌)
+                .loginProcessingUrl("/auth")    // POST 요청 (login 창에 입력한 데이터를 처리)
+                .usernameParameter("id")	// login에 필요한 id 값을 email로 설정 (default는 username)
+                .passwordParameter("password")	// login에 필요한 password 값을 password(default)로 설정
+                .defaultSuccessUrl("/");	// login에 성공하면 /로 redirect
 
-        return daoAuthenticationProvider;
-    }
+		// logout 설정
+        http
+            .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");	// logout에 성공하면 /로 redirect
 
-    // 패스워드 인코더로 사용할 빈 등록
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
+        return http.build();
     }
 }

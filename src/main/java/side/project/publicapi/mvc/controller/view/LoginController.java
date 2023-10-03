@@ -1,23 +1,30 @@
-package side.project.publicapi.mvc.controller;
+package side.project.publicapi.mvc.controller.view;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-import lombok.RequiredArgsConstructor;
-import side.project.publicapi.mvc.service.LoginService;
-import side.project.publicapi.mvc.vo.LoginVO;;
+import lombok.RequiredArgsConstructor;;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/login")
+@RequestMapping
 public class LoginController {
     
+    // ID 생성
+    @GetMapping("/signUp")
+    public String signUp () throws Exception{
+        return "login/CreateId";
+    }
+    
+    // LOGIN 화면
+    @GetMapping("/login")
+    public String login () throws Exception{
+        
+        return "login/success";
+    }
+
+
     // @Autowired
     // LoginService loginService;
     

@@ -1,4 +1,4 @@
-package side.project.publicapi.mvc.controller;
+package side.project.publicapi.mvc.controller.view;
 
 import java.util.List;
 
@@ -19,14 +19,14 @@ public class Culture {
     @Autowired
     CultureApiService cultureApiService;
     
-    @RequestMapping(value="/culture")
+    @RequestMapping(value="/")
     public String getCulture(Model model, Paging pg) throws Exception {
         // 컬쳐 게시판 select 20개씩 가져와서 보여주기
         // pg.setAmount(0);
         // pg.setPageNum(0);
         List<CultureApiVO> getCultureList = cultureApiService.getCultureList(pg);
         model.addAttribute("getCultureList", getCultureList);
-        return "culture/culture";
+        return "culture/Culture";
     }
 
     @RequestMapping(value="/weather")

@@ -16,6 +16,7 @@ public class User implements UserDetails{
     private String id;
     private String pw;
     private String email;
+    private String user_role;
 
     @Override // 권한 반환
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -35,4 +35,7 @@ public class LoginDAO {
 		return getId.getId();
 	}
 
+	public LoginVO getLoginInfo(LoginVO vo) throws Exception{
+		return sqlSession.selectOne("loginDAO.loginCheck", vo);
+	}
 }
