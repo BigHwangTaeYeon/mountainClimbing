@@ -11,52 +11,90 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
+// @Setter
 public class User implements UserDetails{
-    private String id;
-    private String pw;
-    private String email;
-    private String user_role;
+    // private String id;
+    // private String pw;
+    // private String email;
+    // private String user_role;
 
-    @Override // 권한 반환
+    private String id;	// DB에서 PK 값
+    private String loginId;		// 로그인용 ID 값
+    private String pw;	// 비밀번호
+    private String email;	//이메일
+    private boolean emailVerified;	//이메일 인증 여부
+    private boolean locked;	//계정 잠김 여부
+    private String nickname;	//닉네임
+    private Collection<GrantedAuthority> authorities;	//권한 목록
+	
+    
+    /**
+    * 해당 유저의 권한 목록
+    */
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("user"));
+           return authorities;
     }
 
-    // 사용자의 id 반환(고유한 값)
+	/**
+    * 비밀번호
+    */
+	@Override
+    public String getPassword() {
+        return pw;
+    }
+
+
+	/**
+    * PK값
+    */
     @Override
     public String getUsername() {
         return id;
     }
 
-    // 사용자의 패스워드 반환
-    @Override
-    public String getPassword() {
-        return pw;
-    }
-
-    // 계정 만료 여부 반환
+    /**
+     * 계정 만료 여부
+     * true : 만료 안됨
+     * false : 만료
+     * @return
+     */
     @Override
     public boolean isAccountNonExpired() {
-        return true; // true : 만료 X
+        return true;
     }
 
-    // 계정 잠금 여부 반환
+    /**
+     * 계정 잠김 여부
+     * true : 잠기지 않음
+     * false : 잠김
+     * @return
+     */
     @Override
     public boolean isAccountNonLocked() {
-        return true; // true : 잠금 X
+        return locked;
     }
 
-    // 패스워드 만료 여부 반환
+    /**
+     * 비밀번호 만료 여부
+     * true : 만료 안됨
+     * false : 만료
+     * @return
+     */
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // true : 만료 X
+        return true;
     }
 
-    // 계정 사용 가능 여부 반환
+
+    /**
+     * 사용자 활성화 여부
+     * ture : 활성화
+     * false : 비활성화
+     * @return
+     */
     @Override
     public boolean isEnabled() {
-        return true; // true : 사용 가능
-    }
-
+        //이메일이 인증되어 있고 계정이 잠겨있지 않으면 true
+        return (emailVerified && !lock
 }

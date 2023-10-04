@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <!-- Default Layout Import-->
 <html>
-    <head>
-        <title>테스트 페이지 </title>
-    </head>
-    <body>
 
-      <div class="wrapper">
+<head>
+  <title>로그인 페이지 </title>
+</head>
+
+<body>
+
+  <form action="/login/manage/signIn" method="post">
+    <input type="text" id="id" name="id" autofocus="autofocus" /> <br />
+    <input type="password" id="pw" name="pw" /> <br />
+    <input type="submit" value="Login" />
+  </form>
+
+  <!-- <div class="wrapper">
         <div class="container">
           <div class="sign-up-container">
             <form>
@@ -62,6 +70,7 @@
             </div>
           </div>
         </div>
-      </div>
-    </body>
+      </div> -->
+</body>
+
 </html>

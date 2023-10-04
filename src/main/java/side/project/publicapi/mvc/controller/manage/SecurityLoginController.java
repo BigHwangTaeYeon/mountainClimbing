@@ -18,7 +18,7 @@ import side.project.publicapi.mvc.vo.LoginVO;;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping
+@RequestMapping("login/manage")
 public class SecurityLoginController {
     
     @Autowired
@@ -42,15 +42,10 @@ public class SecurityLoginController {
 
         String user = loginService.getLoginId(vo);
 
-        // 로그인 아이디나 비밀번호가 틀린 경우 global error return
-        // if(user == null) 
-            // bindingResult.reject("loginFail", "로그인 아이디 또는 비밀번호가 틀렸습니다.");
-
-        // if(bindingResult.hasErrors()) 
-        //     return "login";
+        if(user == null) 
+            return "login/ConnectId"
 
         // 로그인 성공 => 세션 생성
-
         // 세션을 생성하기 전에 기존의 세션 파기
         httpServletRequest.getSession().invalidate();
         HttpSession session = httpServletRequest.getSession(true);  // Session이 없으면 생성
@@ -58,7 +53,7 @@ public class SecurityLoginController {
         session.setAttribute("userId", user);
         // session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
 
-        return "/culture/Culture";
+        return "culture/Culture";
     }
 
     @PostMapping("/logout")

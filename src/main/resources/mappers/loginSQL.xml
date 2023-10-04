@@ -5,7 +5,7 @@
 	
 <mapper namespace="loginDAO">
 
-    <select id="loginCheck" parameterType="side.project.publicapi.mvc.vo.LoginVO" resultType="side.project.publicapi.mvc.vo.LoginVO">
+    <select id="selectUserById" parameterType="String" resultType="side.project.publicapi.mvc.vo.User">
         SELECT
               ID
             , PW
@@ -17,7 +17,7 @@
             1=1
             AND ID = #{id}
             <if test="pw != null and pw != ''">
-            AND PW = #{pw}
+                AND PW = #{pw}
             </if>
     </select>
 

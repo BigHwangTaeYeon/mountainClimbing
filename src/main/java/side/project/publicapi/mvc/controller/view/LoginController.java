@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping
+@RequestMapping("login/view")
 public class LoginController {
     
     // ID 생성
@@ -21,7 +21,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login () throws Exception{
         
-        return "login/success";
+        return "login/ConnectId";
     }
 
 

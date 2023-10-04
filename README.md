@@ -177,3 +177,9 @@ https://devhan.tistory.com/310#ViewController%20%EC%83%9D%EC%84%B1-1
 https://velog.io/@wooryung/Spring-Boot-Spring-Security%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%98%EC%97%AC-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
 시큐리티 보안 작동은 가능하나, 로그인 후 다른 페이지 이동 불가.
 인가 문제인듯
+
+# 231004
+// UserDetailsService 인터페이스는 DB에서 유저 정보를 가져오는 역할을 한다.
+https://nahwasa.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-30%EC%9D%B4%EC%83%81-Spring-Security-%EA%B8%B0%EB%B3%B8-%EC%84%B8%ED%8C%85-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0
+스프링부트 3.0이상 Spring Security 기본 세팅 (스프링 시큐리티)
+확실히 정리 잘 되어있다.
