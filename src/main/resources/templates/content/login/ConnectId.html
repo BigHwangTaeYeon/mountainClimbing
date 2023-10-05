@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <!-- Default Layout Import-->
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{common/layouts/defaultLayout}" layout:fragment="Content">
 
 <head>
-  <title>로그인 페이지 </title>
+  <title>Login</title>
+
+  <!-- inline JS 영역-->
+  <script th:inline="javascript" type="text/javascript">
+    $(document).ready(() => {
+      alert("Login 페이지가 시작됩니다.");
+    });
+  </script>
 </head>
 
 <body>

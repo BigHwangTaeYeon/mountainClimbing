@@ -18,7 +18,13 @@ public class Culture {
     
     @Autowired
     CultureApiService cultureApiService;
-    
+
+    @GetMapping("/test")
+    public String selectImageList(Model model) {
+        model.addAttribute("title", "");
+        return "pages/test/testPage";
+    }
+
     @RequestMapping(value="/")
     public String getCulture(Model model, Paging pg) throws Exception {
         // 컬쳐 게시판 select 20개씩 가져와서 보여주기
