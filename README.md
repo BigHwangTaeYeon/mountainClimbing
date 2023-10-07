@@ -187,4 +187,3 @@ https://nahwasa.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-30%EC%9D
 # 231006
 // https://fvor001.tistory.com/123
 WebSocket 프로그래밍은 실시간 채팅, 게임, 주식 시세 등 다양한 분야에서 활용된다.
-

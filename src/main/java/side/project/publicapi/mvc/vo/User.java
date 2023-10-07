@@ -1,17 +1,14 @@
 package side.project.publicapi.mvc.vo;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Getter;
-import lombok.Setter;
 
-@Getter
 // @Setter
+@Getter
 public class User implements UserDetails{
     // private String id;
     // private String pw;
@@ -96,5 +93,6 @@ public class User implements UserDetails{
     @Override
     public boolean isEnabled() {
         //이메일이 인증되어 있고 계정이 잠겨있지 않으면 true
-        return (emailVerified && !lock
+        return (emailVerified && !locked);
+    }
 }
