@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import groovy.transform.Undefined.EXCEPTION;
 import lombok.RequiredArgsConstructor;
 import side.project.publicapi.mvc.dao.LoginDAO;
 import side.project.publicapi.mvc.vo.User;
