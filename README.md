@@ -1,10 +1,8 @@
 # mountainClimbing
 
-[Oauth 2.0](#oauth)
-[231006](#231006)
-[Move Text](#index-text)
-[Move Text](#index-text)
-[Move Text](#index-text)
+[Oauth 2.0](#Oauth-231007)
+
+[Security](#Security)
 
 # 20230919
 api 내용 등산 > 문화예술공연으로 변경
@@ -193,11 +191,7 @@ https://nahwasa.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-30%EC%9D
 // https://fvor001.tistory.com/123
 WebSocket 프로그래밍은 실시간 채팅, 게임, 주식 시세 등 다양한 분야에서 활용된다.
 
-#oauth
-123
-# oauth
-456
-# 231007
+# Oauth-231007
 https://adjh54.tistory.com/221
 
 💡 OAuth(Open Authorization)
