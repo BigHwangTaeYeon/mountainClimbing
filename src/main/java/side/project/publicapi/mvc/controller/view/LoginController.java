@@ -24,6 +24,15 @@ public class LoginController {
         return "login/ConnectId";
     }
 
+    // 🪴 승인된 리디렉션 URI
+    // - 서비스에서 파라미터로 인증 정보가 주었을 때 인증이 성공하면 구글에서 리다이렉트할 URL
+    // - 스프링 부트 2 버전의 시큐리티에서는 기본적으로 {도메인}/login/oauth2/code/{소셜서비스코드}
+    // - 별도록 리다이렉트 URL을 지원하는 Controller을 만들 필요 없음
+    @GetMapping("/oauth/google")
+    public String oauthGoogle() {
+
+        return "login/Success";
+    }
 
     // @Autowired
     // LoginService loginService;

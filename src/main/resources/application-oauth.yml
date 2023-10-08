@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 생성된 클라이언트 ID       #https://console.cloud.google.com/에 ID PW 있음
+            client-secret: 생성된 보안 비밀번호
+            scope:
+              - email
+              - profile
+              

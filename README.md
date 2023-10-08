@@ -367,3 +367,8 @@ NTLM 그랜트
 2. Access token request: 클라이언트는 자격 증명을 클라이언트 자신의 자격 증명과 함께 권한 서버로 보냅니다.
 3. Access token: 권한 서버는 토큰을 발급해 줍니다.
 
+# 231008
+1. https://console.cloud.google.com/
+2. https://velog.io/@leeeeeyeon/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0%EC%99%80-OAuth-2.0%EC%9C%BC%EB%A1%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
+3. https://chb2005.tistory.com/182
+Oauth 2.0 Google

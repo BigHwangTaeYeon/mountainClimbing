@@ -43,7 +43,7 @@ public class SecurityLoginController {
         String user = loginService.getLoginId(vo);
 
         if(user == null) 
-            return "login/ConnectId"
+            return "login/ConnectId";
 
         // 로그인 성공 => 세션 생성
         // 세션을 생성하기 전에 기존의 세션 파기
@@ -62,5 +62,9 @@ public class SecurityLoginController {
                 SecurityContextHolder.getContext().getAuthentication());
         return "login/Success";
     }
+
+
+
+
 
 }

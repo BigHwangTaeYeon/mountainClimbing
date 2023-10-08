@@ -19,6 +19,8 @@ spring:
   #   elasticsearch:
   #     cluster-nodes: localhost:9300
   #     cluster-name: my-cluster
+  profiles:
+    include: oauth
 
 elasticsearch:
   port: 9300
