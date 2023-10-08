@@ -38,4 +38,4 @@ out/
 *.log
 
 ### Oauth ###
-application-oauth.yml
+.application-oauth.yml
