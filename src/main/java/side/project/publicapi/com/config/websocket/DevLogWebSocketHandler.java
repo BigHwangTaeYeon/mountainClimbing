@@ -1,3 +1,5 @@
+package side.project.publicapi.com.config.websocket;
+
 import java.util.HashMap;
 import java.util.Map;
 

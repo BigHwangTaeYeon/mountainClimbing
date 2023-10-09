@@ -6,8 +6,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Getter;
+import lombok.Setter;
 
-// @Setter
+@Setter
 @Getter
 public class User implements UserDetails{
     // private String id;
@@ -23,6 +24,8 @@ public class User implements UserDetails{
     private boolean locked;	//계정 잠김 여부
     private String nickname;	//닉네임
     private Collection<GrantedAuthority> authorities;	//권한 목록
+
+    private String oauth_type;	//이메일
 	
     
     /**

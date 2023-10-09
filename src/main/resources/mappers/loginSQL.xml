@@ -5,6 +5,20 @@
 	
 <mapper namespace="loginDAO">
 
+    <select id="findByEmailAndOauthType" parameterType="side.project.publicapi.mvc.vo.User" resultType="side.project.publicapi.mvc.vo.User">
+        SELECT
+              ID
+            , PW
+            , EMAIL
+            , REGDATE
+        FROM
+            LOGIN
+        WHERE
+            1=1
+            AND email = #{email}
+            AND oauth_type = #{oauth_type}
+    </select>
+
     <select id="selectUserById" parameterType="String" resultType="side.project.publicapi.mvc.vo.User">
         SELECT
               ID
@@ -26,11 +40,13 @@
             ID         
           , PW        
           , EMAIL       
+          , OAUTH_TYPE       
           , REGDATE
 		) VALUES (
             #{id}
           , #{pw}
           , #{email}
+          , #{oauth_type}       
           , sysdate
 		)
 	</insert>

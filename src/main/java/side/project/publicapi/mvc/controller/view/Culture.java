@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import side.project.publicapi.com.util.HttpConnection;
@@ -25,7 +26,7 @@ public class Culture {
         return "pages/test/testPage";
     }
 
-    @RequestMapping(value="/")
+    @GetMapping(value= {"/", "culture"})
     public String getCulture(Model model, Paging pg) throws Exception {
         // 컬쳐 게시판 select 20개씩 가져와서 보여주기
         // pg.setAmount(0);
@@ -35,7 +36,7 @@ public class Culture {
         return "culture/Culture";
     }
 
-    @RequestMapping(value="/weather")
+    @GetMapping(value="/weather")
     public void getWeather(String method){
         String url = "http://api.kcisa.kr/openapi/CNV_060/request";
         

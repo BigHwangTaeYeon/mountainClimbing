@@ -1,9 +1,12 @@
 package side.project.publicapi.mvc.controller.view;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;;
 
 @Controller
@@ -22,6 +25,13 @@ public class LoginController {
     public String login () throws Exception{
         
         return "login/ConnectId";
+    }
+
+    // LOGIN 화면
+    @GetMapping("/oauthLogin")
+    public String oauthLogin () throws Exception{
+        
+        return "login/oauthLogin";
     }
 
     // 🪴 승인된 리디렉션 URI

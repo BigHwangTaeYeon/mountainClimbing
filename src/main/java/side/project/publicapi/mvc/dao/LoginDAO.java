@@ -1,5 +1,7 @@
 package side.project.publicapi.mvc.dao;
 
+import java.util.Optional;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,6 +15,14 @@ public class LoginDAO {
 
     @Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	public Optional<User> save(User user) {
+		return sqlSession.selectOne("loginDAO.loginInsert", user);
+	}
+
+	public Optional<User> findByEmailAndOauthType(User user) {
+		return sqlSession.selectOne("loginDAO.findByEmailAndOauthType", user);
+	}
 
 	public User getLoginInfo(String id) {
 		return sqlSession.selectOne("loginDAO.loginCheck", id);

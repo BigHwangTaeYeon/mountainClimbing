@@ -52,6 +52,8 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 	// websocket
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	// oauth2.0
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 tasks.named('test') {
