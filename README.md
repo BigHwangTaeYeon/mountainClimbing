@@ -471,4 +471,9 @@ api 요청에 따라서 다른 보안 정책을 수행할 수 있게 filter를 �
 5. 클라이언트(유저)에게 session ID(JSESSION ID)와 함께 응답을 하게 됩니다.
 6. 이후 요청에서는 요청 쿠키에서 JSESSION ID정보를 통해 이미 로그인 정보가 저장되어 있는 지 확인합니다. 이미 저장되어 있고 유효하면 인증 처리를 해주게 됩니다.
 
+# 231011
+csrf disable 하지말고 사용함으로 코드 짜서 실행해보기
+https://junhyunny.github.io/information/security/spring-boot/spring-security/cross-site-reqeust-forgery/
+Csrf가 무엇인지부터 토큰 방어 코드까지 짜여져있다.
+
 # NEXT
