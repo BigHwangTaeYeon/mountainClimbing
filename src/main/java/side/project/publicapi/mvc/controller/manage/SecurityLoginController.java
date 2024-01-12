@@ -1,19 +1,17 @@
 package side.project.publicapi.mvc.controller.manage;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import lombok.RequiredArgsConstructor;
 import side.project.publicapi.mvc.service.LoginService;
-import side.project.publicapi.mvc.vo.LoginVO;;
+import side.project.publicapi.mvc.vo.LoginVO;
+
+;
 
 @Controller
 @RequiredArgsConstructor
@@ -55,12 +53,12 @@ public class SecurityLoginController {
         return "culture/Culture";
     }
 
-    @PostMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        new SecurityContextLogoutHandler().logout(request, response,
-                SecurityContextHolder.getContext().getAuthentication());
-        return "login/Success";
-    }
+//    @PostMapping("/logout")
+//    public String logout(HttpServletRequest request, HttpServletResponse response) {
+//        new SecurityContextLogoutHandler().logout(request, response,
+//                SecurityContextHolder.getContext().getAuthentication());
+//        return "login/Success";
+//    }
 
 
 

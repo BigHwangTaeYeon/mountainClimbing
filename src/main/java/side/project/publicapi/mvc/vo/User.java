@@ -1,16 +1,16 @@
 package side.project.publicapi.mvc.vo;
 
-import java.util.Collection;
-
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Collection;
 
 @Setter
 @Getter
-public class User implements UserDetails{
+public class User implements UserDetails {
+//public class User {
     // private String id;
     // private String pw;
     // private String email;
@@ -26,8 +26,8 @@ public class User implements UserDetails{
     private Collection<GrantedAuthority> authorities;	//권한 목록
 
     private String oauth_type;	//이메일
-	
-    
+
+
     /**
     * 해당 유저의 권한 목록
     */

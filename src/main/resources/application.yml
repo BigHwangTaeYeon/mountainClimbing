@@ -11,10 +11,14 @@ spring:
     livereload:
       enabled: true
   datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
-    username: hwang
-    password: rootoor
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
+#    username: hwang
+#    password: rootoor
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:8050/test
+    username: root
+    password: root
   # data:
   #   elasticsearch:
   #     cluster-nodes: localhost:9300
