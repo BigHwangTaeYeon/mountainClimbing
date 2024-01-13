@@ -1,5 +1,7 @@
 # Security
 
+[참고자료](https://github.com/stir084/SpringSecurity-Example)
+
 2024-01-13</br>
 처음 만들었을 때,</br>
 user 객체를 만들고 UserDetails 인터페이스를 상속받기만 하면 된다고 생각했다.</br>
