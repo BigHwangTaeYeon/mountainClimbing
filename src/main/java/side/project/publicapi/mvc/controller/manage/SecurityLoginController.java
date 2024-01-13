@@ -4,12 +4,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import side.project.publicapi.mvc.dao.LoginDAO;
 import side.project.publicapi.mvc.service.LoginService;
 import side.project.publicapi.mvc.vo.LoginVO;
+import side.project.publicapi.mvc.vo.User;
 
 ;
 
@@ -20,6 +23,12 @@ public class SecurityLoginController {
     
     @Autowired
     LoginService loginService;
+
+    @Autowired
+    LoginDAO LoginVODao;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // ID 생성
     @PostMapping("/createId")
@@ -35,9 +44,16 @@ public class SecurityLoginController {
 
     // LOGIN 인증 및 세션 부여
     @PostMapping("/signIn")
-    public String login(@RequestBody LoginVO vo, HttpServletRequest httpServletRequest) throws Exception {
+    public String login(User user, HttpServletRequest httpServletRequest) throws Exception {
 
-        String user = loginService.getLoginId(vo);
+        String rawPassword = user.getPw();
+        String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+//        user.set(encPassword);
+        user.setRole("ROLE_USER");
+//        userRepository.save(user);
+
+//        String user = loginService.getLoginId(vo);
+//        User user = LoginVODao.selectUserById(vo.getLoginId());
 
         if(user == null) 
             return "login/ConnectId";

@@ -5,54 +5,55 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import side.project.publicapi.com.config.ApplicationContextProvider;
-import side.project.publicapi.mvc.serviceImpl.SecurityLoginServiceImpl;
 
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
     //https://velog.io/@woosim34/Spring-Spring-Security-%EC%84%A4%EC%A0%95-%EB%B0%8F-%EA%B5%AC%ED%98%84SessionSpring-boot3.0-%EC%9D%B4%EC%83%81
-    SecurityLoginServiceImpl securityLoginServiceImpl = (SecurityLoginServiceImpl) ApplicationContextProvider.getApplicationContext().getBean(SecurityLoginServiceImpl.class);
+//    SecurityLoginServiceImpl securityLoginServiceImpl = (SecurityLoginServiceImpl) ApplicationContextProvider.getApplicationContext().getBean(SecurityLoginServiceImpl.class);
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http
-                .csrf((csrfConfig) ->
-                        csrfConfig.disable()
-                ) // 1번
-                .headers((headerConfig) ->
-                        headerConfig.frameOptions(frameOptionsConfig ->
-                                frameOptionsConfig.disable()
-                        )
-                )// 2번
-                .authorizeHttpRequests((authorizeRequests) ->
-                        authorizeRequests
+            .csrf((csrfConfig) ->
+                    csrfConfig.disable()
+            ) // 1번
+            .headers((headerConfig) ->
+                    headerConfig.frameOptions(frameOptionsConfig ->
+                            frameOptionsConfig.disable()
+                    )
+            )// 2번
+            .authorizeHttpRequests((authorizeRequests) ->
+                    authorizeRequests
 //                                .requestMatchers(PathRequest.toH2Console()).permitAll()
-                                .requestMatchers("/", "/login/**").permitAll()
-                                .anyRequest().authenticated()
-                )// 3번
+                            .requestMatchers("/", "/login/**").permitAll()
+                            .anyRequest().authenticated()
+            )// 3번
 //                .exceptionHandling((exceptionConfig) ->
 //                        exceptionConfig.authenticationEntryPoint(unauthorizedEntryPoint).accessDeniedHandler(accessDeniedHandler)
 //                ); // 401 403 관련 예외처리
-                .formLogin((formLogin) ->
+            .formLogin((formLogin) ->
                 formLogin
-                        .loginPage("/login/view/login")
-                        .usernameParameter("id")
-                        .passwordParameter("pw")
-                        .loginProcessingUrl("/login/manage/signIn")
-                        .defaultSuccessUrl("/", true)
-        )
-                .logout((logoutConfig) ->
-                        logoutConfig.logoutSuccessUrl("/")
-                )
-                .userDetailsService(securityLoginServiceImpl);
-
+                    .loginPage("/login/view/login")
+                    .usernameParameter("loginId")
+                    .passwordParameter("pw")
+                    .loginProcessingUrl("/login/manage/signIn")
+                    .defaultSuccessUrl("/chat", true)
+            )
+            .logout((logoutConfig) ->
+                    logoutConfig.logoutSuccessUrl("/login/view/login")
+            );
+//            .userDetailsService(SecurityLoginServiceImpl);
         return http.build();
     }
 
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 //
 //    private final OAuth2UserService oAuth2UserService;
 //

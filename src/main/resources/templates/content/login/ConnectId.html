@@ -8,7 +8,7 @@
   <title>Login</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- inline JS 영역-->
-  <script th:inline="javascript" type="text/javascript">
+  <!--<script th:inline="javascript" type="text/javascript">
     $(document).ready(() => {
       // alert("Login 페이지가 시작됩니다.");
       $('input[name="test"]').off('click').on('click', function(){
@@ -17,7 +17,7 @@
             url : '/login/manage/signIn',           // 요청할 서버url
             dataType : 'text',       // 데이터 타입 (html, xml, json, text 등등)
             data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
-              "id" : 'admin',
+              "loginId" : 'admin',
               "pw" : '1234'
             }),
             success : function(result) { // 결과 성공 콜백함수
@@ -30,17 +30,15 @@
       })
     });
 
-  </script>
+  </script>-->
 </head>
 
 <body>
-
   <form action="/login/manage/signIn" method="post">
-    <input type="text" id="id" name="id" autofocus="autofocus" /> <br />
+    <input type="text" id="loginId" name="loginId" autofocus="autofocus" /> <br />
     <input type="password" id="pw" name="pw" /> <br />
     <input type="submit" value="Login" />
   </form>
-
   <input type="button" name="test" value="test">
 </body>
 

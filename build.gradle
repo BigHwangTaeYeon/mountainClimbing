@@ -38,6 +38,7 @@ dependencies {
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 	implementation group: 'commons-configuration', name: 'commons-configuration', version: '1.10'
 	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 	// 엘라스틱서치
     implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:6.5.3')
     implementation('org.elasticsearch:elasticsearch:6.5.3')

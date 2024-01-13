@@ -1,14 +1,13 @@
 package side.project.publicapi.mvc.dao;
 
-import java.util.Optional;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
-
 import side.project.publicapi.mvc.vo.LoginVO;
 import side.project.publicapi.mvc.vo.User;
+
+import java.util.Optional;
 
 @Repository("loginDAO")
 public class LoginDAO {
@@ -49,8 +48,8 @@ public class LoginDAO {
 		return sqlSession.selectOne("loginDAO.loginCheck", vo);
 	}
 
-	public User selectUserById(String id) throws Exception{
-		return sqlSession.selectOne("loginDAO.selectUserById", id);
+	public User selectUserById(String loginId) throws Exception{
+		return sqlSession.selectOne("loginDAO.selectUserById", loginId);
 	}
 
 }

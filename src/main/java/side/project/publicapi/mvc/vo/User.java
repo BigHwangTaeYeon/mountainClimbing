@@ -2,100 +2,63 @@ package side.project.publicapi.mvc.vo;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
 
 @Setter
 @Getter
-public class User implements UserDetails {
-//public class User {
-    // private String id;
-    // private String pw;
-    // private String email;
-    // private String user_role;
-
-    private String id;	// DB에서 PK 값
-    private String loginId;		// 로그인용 ID 값
-    private String pw;	// 비밀번호
-    private String email;	//이메일
-    private boolean emailVerified;	//이메일 인증 여부
-    private boolean locked;	//계정 잠김 여부
-    private String nickname;	//닉네임
-    private Collection<GrantedAuthority> authorities;	//권한 목록
+public class User {
+    private String id;
+    private String loginId;
+    private String pw;
+    private String email;
+    private String role; //ROLE_USER, ROLE_ADMIN
 
     private String oauth_type;	//이메일
 
-
-    /**
-    * 해당 유저의 권한 목록
-    */
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-           return authorities;
-    }
-
-	/**
-    * 비밀번호
-    */
-	@Override
-    public String getPassword() {
-        return pw;
-    }
-
-
-	/**
-    * PK값
-    */
-    @Override
-    public String getUsername() {
+    public String getId() {
         return id;
     }
 
-    /**
-     * 계정 만료 여부
-     * true : 만료 안됨
-     * false : 만료
-     * @return
-     */
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    /**
-     * 계정 잠김 여부
-     * true : 잠기지 않음
-     * false : 잠김
-     * @return
-     */
-    @Override
-    public boolean isAccountNonLocked() {
-        return locked;
+    public String getLoginId() {
+        return loginId;
     }
 
-    /**
-     * 비밀번호 만료 여부
-     * true : 만료 안됨
-     * false : 만료
-     * @return
-     */
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
+    public String getPw() {
+        return pw;
+    }
 
-    /**
-     * 사용자 활성화 여부
-     * ture : 활성화
-     * false : 비활성화
-     * @return
-     */
-    @Override
-    public boolean isEnabled() {
-        //이메일이 인증되어 있고 계정이 잠겨있지 않으면 true
-        return (emailVerified && !locked);
+    public void setPw(String pw) {
+        this.pw = pw;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getOauth_type() {
+        return oauth_type;
+    }
+
+    public void setOauth_type(String oauth_type) {
+        this.oauth_type = oauth_type;
     }
 }

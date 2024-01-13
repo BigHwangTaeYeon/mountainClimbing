@@ -22,17 +22,17 @@
     <select id="selectUserById" parameterType="String" resultType="side.project.publicapi.mvc.vo.User">
         SELECT
               ID
+            , LOGINID
             , PW
             , EMAIL
-            , REGDATE
         FROM
             LOGIN
         WHERE
             1=1
-            AND ID = #{id}
-            <if test="pw != null and pw != ''">
+            AND LOGINID = #{loginId}
+            <!--<if test="pw != null and pw != ''">
                 AND PW = #{pw}
-            </if>
+            </if>-->
     </select>
 
 	<insert id="loginInsert" parameterType="side.project.publicapi.mvc.vo.LoginVO">
@@ -47,7 +47,6 @@
           , #{pw}
           , #{email}
           , #{oauth_type}       
-          , sysdate
 		)
 	</insert>
 
